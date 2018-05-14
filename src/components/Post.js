@@ -1,10 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react';
 
-const Post = ({post}) =>
-  <div className="post-block" key={post.id}>
-    <p>{post.date}</p>
-    <h4>{post.title}</h4>
-    <p>{post.body}</p>
-  </div>
+class Post extends Component {
+  handleClick = () => {
+    this.props.onClick(this.props.post.id)
+  }
 
-export default Post
+  render () {
+    return(
+      <div className="post-block">
+        <p onClick={this.handleClick}>
+          {this.props.post.date}
+        </p>
+        <h4 onClick={this.handleClick}>
+          {this.props.post.title}
+        </h4>
+        <p onClick={this.handleClick}>
+          {this.props.post.body}
+        </p>
+      </div>
+    )
+  }
+}
+
+export default Post;

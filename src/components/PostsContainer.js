@@ -18,9 +18,11 @@ class PostsContainer extends Component {
         {this.state.posts.map((post) => {
           if (this.state.editingPostId === post.id) {
             return(<PostForm post={post} key={post.id}
-              updatePost={this.updatePost}/>)
+              updatePost={this.updatePost}
+              resetNotification={this.resetNotification} />)
           } else {
-            return(<Post post={post} key={post.id} />)
+            return(<Post post={post} key={post.id}
+              onClick={this.enableEditing} />)
           }
         })}
       </div>
@@ -74,6 +76,14 @@ class PostsContainer extends Component {
       this.setState({posts: posts,
       notification: 'Your changes have been saved.'
     })
+  }
+
+  resetNotification = () => {
+    this.setState({notification: ''})
+  }
+
+  enableEditing = (id) => {
+    this.setState({editingPostId: id})
   }
 }
 
