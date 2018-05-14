@@ -13,7 +13,7 @@ class PostForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="post-block">
         <form onBlur={this.handleBlur}>
           <input className='input' type="datetime" name="date" placeholder='Enter the Date'
           value={this.state.date} onChange={this.handleInput}  />
