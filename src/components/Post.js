@@ -5,9 +5,16 @@ class Post extends Component {
     this.props.onClick(this.props.post.id)
   }
 
+  handleDelete = () => {
+    this.props.onDelete(this.props.post.id)
+  }
+
   render () {
     return(
       <div className="post-block">
+        <span className="deleteButton" onClick={this.handleDelete}>
+          x
+        </span>
         <p onClick={this.handleClick}>
           {this.props.post.date}
         </p>

@@ -22,7 +22,8 @@ class PostsContainer extends Component {
               resetNotification={this.resetNotification} />)
           } else {
             return(<Post post={post} key={post.id}
-              onClick={this.enableEditing} />)
+              onClick={this.enableEditing}
+              onDelete={this.deletePost} />)
           }
         })}
       </div>
@@ -84,6 +85,16 @@ class PostsContainer extends Component {
 
   enableEditing = (id) => {
     this.setState({editingPostId: id})
+  }
+
+  deletePost = (id) => {
+    axios.delete(`http://localhost:3001/posts/${id}`)
+    .then(response => {
+      const postIndex = this.state.posts.findIndex(x => x.id === id)
+      const posts = update(this.state.posts, { $splice: [[postIndex, 1]]})
+      this.setState({posts: posts})
+    })
+    .catch(error => console.log(error))
   }
 }
 
