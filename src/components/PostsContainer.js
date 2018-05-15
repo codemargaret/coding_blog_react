@@ -40,7 +40,7 @@ class PostsContainer extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3001/posts.json')
+    axios.get('https://code-blog-rails.herokuapp.com/posts.json')
     .then(response => {
       this.setState({posts: response.data})
     })
@@ -49,7 +49,7 @@ class PostsContainer extends Component {
 
   addNewPost = () => {
     axios.post(
-      'http://localhost:3001/posts',
+      'https://code-blog-rails.herokuapp.com/posts',
       { post:
         {
           title: '',
@@ -88,7 +88,7 @@ class PostsContainer extends Component {
   }
 
   deletePost = (id) => {
-    axios.delete(`http://localhost:3001/posts/${id}`)
+    axios.delete(`https://code-blog-rails.herokuapp.com/posts/${id}`)
     .then(response => {
       const postIndex = this.state.posts.findIndex(x => x.id === id)
       const posts = update(this.state.posts, { $splice: [[postIndex, 1]]})

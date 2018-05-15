@@ -39,7 +39,7 @@ class PostForm extends Component {
     }
 
     axios.put(
-      `http://localhost:3001/posts/${this.props.post.id}`,
+      `https://code-blog-rails.herokuapp.com/posts/${this.props.post.id}`,
       {
         post: post
       })
@@ -50,4 +50,4 @@ class PostForm extends Component {
   }
 }
 
-export default PostForm
+export default PostForm;
